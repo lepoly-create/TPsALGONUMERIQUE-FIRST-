@@ -1,19 +1,34 @@
-#coding:utf-8
-# -*- coding:utf -*-
-import numpy as np
+import math
+def newton(fonction, dfonction, x0, precision = 1e-10, max_iteration = 100):
+    x=x0
+    
+    for i in range(max_iteration):
+        fx= fonction(x)
+        dfx = dfonction(x)
+        
+        if dfx ==0:
+            print("la dérivée ne doit pas être nulle")
+            return None
+        
+        x_nouveau = (x- fx)/ dfx
+        
+        if abs(x_nouveau -x)< precision:
+            return x_nouveau
+        
+        x=x_nouveau
+    
+    print("maximum itérations atteint")
+    
+    return x
 
-def newton(f, f_prime, x0, epsilon=1e-6, max_iterations=100):
-    x = x0
-    iteration = 0
-    while abs(f(x)) > epsilon and iteration < max_iterations:
-        x = x - f(x) / f_prime(x)
-        iteration += 1
 
-    if abs(f(x)) <= epsilon:
-        print("la fonction admet une solution x0: ", x, "à la ",iteration, "ième itération")
-    else:
-        raise ValueError("La méthode de Newton n'a pas convergé.")
 
-#Exemple d'utilisation          
-newton(f=lambda x: x**3 -x**2 +x -2, f_prime=lambda x: 3*x**2 -2*x +1, x0=5, epsilon=0.0001, max_iterations=1000)
+def fonction(x):
+    return x**3 -x -2
 
+def dfonction(x):
+    return 3*x**2 -1
+
+solution = newton(fonction, dfonction, x0= 1.5)
+
+print(f"racine trouvée est: {solution}")

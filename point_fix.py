@@ -1,18 +1,10 @@
 #coding:utf-8
 # -*- coding:utf -*-
 def point_fixe(g, x0, epsilone, max_iterations):
-    """
-    Méthode du point fixe pour trouver une solution à l'équation f(x) = x.
+
+    ##Méthode du point fixe pour trouver une solution à l'équation f(x) = x.
     
-    Args:
-        g (function): La fonction g(x) = x.
-        x0 (float): La valeur initiale.
-        epsilon (float): La précision souhaitée.
-        max_iterations (int): Le nombre maximum d'itérations.
-    
-    Returns:
-        float: La solution approximative du point fixe.
-    """
+
     x = x0
     iteration = 0
     y = g(x0)
